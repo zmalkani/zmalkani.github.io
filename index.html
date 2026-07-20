@@ -29,7 +29,7 @@
     body {
       font-family: var(--font-serif);
       font-size: 14px;
-      background: var(--bone-dark);
+      background: url('xp.png') center center / cover fixed;
       color: var(--text);
       line-height: 1.4;
       padding: 20px;
@@ -94,10 +94,20 @@
     .window-title .btn-close {
       width: 12px;
       height: 12px;
-      border: 1px solid var(--border-dark);
+      border-top: 2px solid var(--shadow-light);
+      border-left: 2px solid var(--shadow-light);
+      border-right: 2px solid var(--shadow-dark);
+      border-bottom: 2px solid var(--shadow-dark);
       background: var(--bone);
       margin-right: 8px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      line-height: 1;
+      font-family: sans-serif;
+      color: var(--text);
+      cursor: default;
     }
 
     .window-title .title-text {
@@ -138,7 +148,8 @@
       font-size: 15px;
       font-weight: bold;
       margin-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--shadow-dark);
+      border-top: 0;
       padding-bottom: 3px;
     }
 
@@ -157,29 +168,35 @@
 
     .nav-links {
       margin: 10px 0 16px;
-      padding: 6px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+      display: flex;
+      gap: 6px;
       font-family: var(--font-serif);
       font-size: 12px;
     }
 
     .nav-links a {
-      margin-right: 16px;
       text-decoration: none;
       color: var(--text);
+      padding: 2px 8px;
+      background: var(--bone);
+      border-top: 2px solid var(--shadow-light);
+      border-left: 2px solid var(--shadow-light);
+      border-right: 2px solid var(--shadow-dark);
+      border-bottom: 2px solid var(--shadow-dark);
     }
 
     .nav-links a:hover {
-      text-decoration: underline;
+      background: var(--bone-dark);
     }
 
     /* Project cards */
     .project {
-      background: var(--bone-dark);
-      border: 1px solid var(--border);
-      border-top-color: var(--shadow-light);
-      border-left-color: var(--shadow-light);
+      border-top: 2px solid var(--shadow-light);
+      border-left: 2px solid var(--shadow-light);
+      border-right: 2px solid var(--shadow-dark);
+      border-bottom: 2px solid var(--shadow-dark);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.12);
       padding: 12px 14px;
       margin-bottom: 12px;
     }
@@ -239,8 +256,12 @@
 
     /* Experience section */
     .experience-item {
-      border-left: 2px solid var(--border);
-      padding-left: 12px;
+      border-top: 2px solid var(--shadow-light);
+      border-left: 2px solid var(--shadow-light);
+      border-right: 2px solid var(--shadow-dark);
+      border-bottom: 2px solid var(--shadow-dark);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.12);
+      padding: 8px 12px;
       margin-bottom: 14px;
     }
 
@@ -339,8 +360,40 @@
       display: block;
     }
 
+    /* Scattered desktop photos */
+    .scattered-photo {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: default;
+      user-select: none;
+    }
+
+    .scattered-photo img {
+      display: block;
+      object-fit: cover;
+      border: 2px solid #999;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .scattered-photo .photo-label {
+      font-family: var(--font-serif);
+      font-size: 11px;
+      color: var(--text);
+      background: rgba(245,240,232,0.75);
+      padding: 1px 4px;
+      text-align: center;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     @media (max-width: 900px) {
       .desktop-icons { display: none; }
+      .scattered-photo { display: none; }
     }
 
     @media (max-width: 600px) {
@@ -364,6 +417,17 @@
     <span class="clock" id="clock"></span>
   </div>
 
+  <!-- Scattered Photos -->
+  <div class="scattered-photo" style="left: 18px; bottom: 160px;">
+    <img src="us.JPG" alt="us" style="width: 120px; height: 120px; object-position: top;" />
+    <span class="photo-label">big_win.jpg</span>
+  </div>
+
+  <div class="scattered-photo" style="right: 18px; bottom: 120px;">
+    <img src="cssra.JPG" alt="cssra" style="width: 140px; height: 90px; object-position: 60% 70%;" />
+    <span class="photo-label">nationals.jpg</span>
+  </div>
+
   <!-- Desktop Icons -->
   <div class="desktop-icons">
     <a href="https://github.com/zmalkani" class="desktop-icon" target="_blank" rel="noreferrer">
@@ -379,21 +443,31 @@
   <!-- Main Window -->
   <div class="window">
     <div class="window-title">
-      <span class="btn-close"></span>
+      <span class="btn-close">&#x2715;</span>
       <span class="stripes"></span>
       <span class="title-text">zachmalkani.ca</span>
       <span class="stripes"></span>
     </div>
     <div class="window-body">
 
-      <h1>zach malkani</h1>
-      <p>amateur engineer, royal st. george's college '27 prefect</p>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;">
+        <div style="flex:1;min-width:0;">
+          <h1 style="margin-bottom:4px;">zach malkani</h1>
+          <p style="margin-bottom:10px;">amateur engineer, royal st. george's college '27 prefect</p>
+          <div class="nav-links">
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="https://github.com/zmalkani" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="mailto:zmalkani@rsgc.on.ca">Contact</a>
+          </div>
+        </div>
+        <div style="height:180px;width:180px;flex-shrink:0;border:1px solid var(--border-dark);border-top-color:var(--shadow-dark);border-left-color:var(--shadow-dark);border-right-color:var(--shadow-light);border-bottom-color:var(--shadow-light);padding:2px;box-sizing:border-box;overflow:hidden;">
+          <div style="width:100%;height:100%;background:url('IMG_0873.JPG') center center / 140% auto no-repeat;"></div>
+        </div>
+      </div>
 
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="https://github.com/zmalkani" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="zmalkani@rsgc.on.ca" target="_blank" rel="noreferrer">Contact</a>
+      <div style="margin-bottom:14px;">
+      <p>Hey! My name is Zach Malkani. I'm a Grade 12 student and prefect at Royal St. George's College. I am super passionate about engineering and rowing - and hope to take both those lives with me into university next year. Since I was a little guy, I've always loved making things. Whether it be multi-floor lego boats to test in the kitchen sink when I was 7, or making sketchy wooden ramps to bike on with my friends in grade 8, I've always been drawn to creating. By Grade 10 when I started the RSGC ACES program, I began to gain knowledge on electronics, and my passion became truly enabled. Since then, I've been making all sorts of things, the best of which are just below here! Thanks for taking a look here and if you'd like to chat feel free to send me an email at <a href="mailto:zmalkani@rsgc.on.ca">zmalkani@rsgc.on.ca</a>.</p> 
       </div>
 
       <!-- Projects -->
@@ -417,7 +491,7 @@
         <div class="project">
           <div class="project-content">
             <div class="project-details">
-              <h3>Malkani Bike Computer</h3>
+              <h3>malkani bike computer</h3>
               <p>Open-source hardware and software bike computer for real-time speed, cadence, and distance.</p>
               <a href="https://github.com/zmalkani/Malkani-Bike-Computer-Project" target="_blank" rel="noreferrer">View on GitHub &rarr;</a><br>
               <a href="https://www.youtube.com/watch?v=T7-b6dTSNZE" target="_blank" rel="noreferrer">View on YouTube &rarr;</a>
@@ -431,7 +505,7 @@
         <div class="project">
           <div class="project-content">
             <div class="project-details">
-              <h3>Design Engineering Report</h3>
+              <h3>design engineering report</h3>
               <p>All reports since Grade 10, at the RSGC Advanced Computer Engineering program.</p>
               <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">View PDF &rarr;</a>
             </div>
@@ -451,7 +525,7 @@
             <div class="role"><a href="https://carbup.ca" target="_blank" rel="noopener noreferrer">CarbUp.ca</a></div>
             <div class="company">sports nutrition company</div>
             <div class="dates">may 2026 &ndash; present</div>
-            <div class="desc">web design/operations</div>
+            <div class="desc">web design/social media/operations</div>
           </div>
           <img class="experience-logo" src="image.png" alt="CarbUp logo" />
         </div>
@@ -489,6 +563,28 @@
     }
     updateClock();
     setInterval(updateClock, 30000);
+  </script>
+  <script>
+    (function() {
+      var img = new Image();
+      img.onload = function() {
+        var size = 64;
+        var canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        var ctx = canvas.getContext('2d');
+        var scale = Math.max(size / img.width, size / img.height);
+        var w = img.width * scale;
+        var h = img.height * scale;
+        ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
+        var link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/png';
+        link.href = canvas.toDataURL();
+        document.head.appendChild(link);
+      };
+      img.src = 'me.png';
+    })();
   </script>
 </body>
 </html>
