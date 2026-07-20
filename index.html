@@ -3,127 +3,397 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Personal Website</title>
-  <meta name="description" content="Personal webingite of Your Name" />
+  <title>Z. Malkani</title>
+  <meta name="description" content="Personal website of Z. Malkani" />
   <style>
     :root {
-      --bg: #0b1020;
-      --card: #121a33;
-      --text: #e8ecff;
-      --muted: #a9b3d9;
-      --accent: #7aa2ff;
-      --accent2: #86efac;
-      --max: 920px;
+      --bone: #f5f0e8;
+      --bone-dark: #e8e0d4;
+      --bone-darker: #d4ccc0;
+      --border: #888;
+      --border-dark: #555;
+      --text: #000;
+      --highlight: #000080;
+      --white: #fff;
+      --shadow-light: #fff;
+      --shadow-dark: #777;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 80% -10%, #1b2650 0%, var(--bg) 45%);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14px;
+      background: var(--bone-dark);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.4;
+      padding: 20px;
     }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 24px; }
-    .nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 0 24px;
+
+    /* Menu bar */
+    .menu-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background: var(--bone);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      z-index: 1000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
     }
-    .brand { font-weight: 700; letter-spacing: .3px; }
-    .links a {
-      color: var(--muted); text-decoration: none; margin-left: 14px;
+
+    .menu-bar .apple-icon {
+      font-size: 16px;
+      margin-right: 18px;
+      font-weight: bold;
     }
-    .links a:hover { color: var(--text); }
-    .hero {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 34px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+
+    .menu-bar span {
+      margin-right: 18px;
+      cursor: default;
     }
-    h1 { margin: 0 0 8px; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.15; }
-    .subtitle { color: var(--muted); margin: 0 0 20px; }
-    .cta a {
-      display: inline-block; margin-right: 10px; margin-top: 6px;
-      background: var(--accent); color: #08112b; text-decoration: none;
-      padding: 10px 14px; border-radius: 10px; font-weight: 600;
+
+    .menu-bar .clock {
+      margin-left: auto;
+      margin-right: 0;
     }
-    .cta a.secondary {
-      background: transparent; color: var(--text);
-      border: 1px solid rgba(255,255,255,.2);
+
+    /* Window styling */
+    .window {
+      background: var(--bone);
+      border: 2px solid var(--border-dark);
+      border-top-color: var(--shadow-light);
+      border-left-color: var(--shadow-light);
+      border-right-color: var(--shadow-dark);
+      border-bottom-color: var(--shadow-dark);
+      margin: 36px auto 20px;
+      max-width: 780px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
     }
-    section { margin-top: 26px; }
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;
+
+    .window-title {
+      background: var(--bone-darker);
+      border-bottom: 2px solid var(--border);
+      padding: 3px 8px;
+      display: flex;
+      align-items: center;
+      height: 22px;
+      cursor: default;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px; padding: 16px;
+
+    .window-title .btn-close {
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--border-dark);
+      background: var(--bone);
+      margin-right: 8px;
+      display: inline-block;
     }
-    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); }
-    footer {
-      margin: 34px 0 10px; color: var(--muted); font-size: .95rem;
+
+    .window-title .title-text {
+      flex: 1;
       text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
     }
-    .dot { color: var(--accent2); }
+
+    .window-title .stripes {
+      flex: 1;
+      height: 10px;
+      background: repeating-linear-gradient(
+        0deg,
+        var(--border) 0px,
+        var(--border) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      margin: 0 6px;
+    }
+
+    .window-body {
+      padding: 16px 20px;
+    }
+
+    /* Content sections */
+    h1 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: var(--highlight);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #000;
+    }
+
+    .nav-links {
+      margin: 10px 0 16px;
+      padding: 6px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
+
+    .nav-links a {
+      margin-right: 16px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Project cards */
+    .project {
+      background: var(--bone-dark);
+      border: 1px solid var(--border);
+      border-top-color: var(--shadow-light);
+      border-left-color: var(--shadow-light);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .project h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .project p {
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .project a {
+      font-size: 12px;
+    }
+
+    /* Experience section */
+    .experience-item {
+      border-left: 2px solid var(--border);
+      padding-left: 12px;
+      margin-bottom: 14px;
+    }
+
+    .experience-item .role {
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+    }
+
+    .experience-item .company {
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    .experience-item .dates {
+      font-size: 11px;
+      color: #555;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .experience-item .desc {
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    /* Footer */
+    .footer-text {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      margin-top: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Section spacing */
+    .section {
+      margin-top: 20px;
+    }
+
+    /* Desktop icons */
+    .desktop-icons {
+      position: fixed;
+      top: 36px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .desktop-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      cursor: default;
+    }
+
+    .desktop-icon .icon-img {
+      width: 40px;
+      height: 40px;
+      background: var(--bone);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .desktop-icons { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .window { margin-top: 32px; }
+      .window-body { padding: 12px 14px; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <div class="brand">YourName<span class="dot">.</span></div>
-      <div class="links">
+
+  <!-- Menu Bar -->
+  <div class="menu-bar">
+    <span class="apple-icon">&#63743;</span>
+    <span><b>File</b></span>
+    <span><b>Edit</b></span>
+    <span><b>View</b></span>
+    <span><b>Special</b></span>
+    <span class="clock" id="clock"></span>
+  </div>
+
+  <!-- Desktop Icons -->
+  <div class="desktop-icons">
+    <a href="https://github.com/zmalkani" class="desktop-icon" target="_blank" rel="noreferrer">
+      <div class="icon-img">&#128190;</div>
+      <span>GitHub</span>
+    </a>
+    <a href="https://www.linkedin.com/in/zmalkani/" class="desktop-icon" target="_blank" rel="noreferrer">
+      <div class="icon-img">&#128196;</div>
+      <span>LinkedIn</span>
+    </a>
+  </div>
+
+  <!-- Main Window -->
+  <div class="window">
+    <div class="window-title">
+      <span class="btn-close"></span>
+      <span class="stripes"></span>
+      <span class="title-text">Z. Malkani</span>
+      <span class="stripes"></span>
+    </div>
+    <div class="window-body">
+
+      <h1>Z. Malkani</h1>
+      <p>Developer &amp; builder of things.</p>
+
+      <div class="nav-links">
         <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="mailto:you@example.com">Contact</a>
+        <a href="#experience">Experience</a>
+        <a href="https://github.com/zmalkani" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/zmalkani" target="_blank" rel="noreferrer">Contact</a>
       </div>
-    </nav>
 
-    <header class="hero">
-      <h1>Hey, I’m Your Name 👋</h1>
-      <p class="subtitle">
-        I’m a [job title/student/etc.] interested in web development, design, and building useful things.
-      </p>
-      <div class="cta">
-        <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="secondary" href="https://www.linkedin.com/in/yourusername/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <!-- Projects -->
+      <div class="section" id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+          <h3>openRow-mantis</h3>
+          <p>Open-source rowing performance tracker and analytics platform.</p>
+          <a href="https://github.com/zmalkani/openRow-mantis" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+        </div>
+
+        <div class="project">
+          <h3>Malkani Bike Computer</h3>
+          <p>Custom bike computer built from scratch &mdash; hardware and software for real-time ride data.</p>
+          <a href="https://github.com/zmalkani/Malkani-Bike-Computer" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+        </div>
       </div>
-    </header>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Project One</h3>
-          <p>Short description of what it does and what tech you used.</p>
-        </article>
-        <article class="card">
-          <h3>Project Two</h3>
-          <p>Short description of what problem it solves.</p>
-        </article>
-        <article class="card">
-          <h3>Project Three</h3>
-          <p>Short description with a result or impact.</p>
-        </article>
+      <!-- Experience -->
+      <div class="section" id="experience">
+        <h2>Experience</h2>
+
+        <div class="experience-item">
+          <div class="role">Role Title</div>
+          <div class="company">Company / Organization</div>
+          <div class="dates">Start &ndash; End</div>
+          <div class="desc">Brief description of responsibilities and accomplishments.</div>
+        </div>
+
+        <div class="experience-item">
+          <div class="role">Role Title</div>
+          <div class="company">Company / Organization</div>
+          <div class="dates">Start &ndash; End</div>
+          <div class="desc">Brief description of responsibilities and accomplishments.</div>
+        </div>
+
+        <div class="experience-item">
+          <div class="role">Role Title</div>
+          <div class="company">Company / Organization</div>
+          <div class="dates">Start &ndash; End</div>
+          <div class="desc">Brief description of responsibilities and accomplishments.</div>
+        </div>
       </div>
-    </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p style="color: var(--muted);">
-        Write 3–5 lines about yourself, your interests, and what you’re currently learning.
-      </p>
-    </section>
+      <div class="footer-text">
+        &copy; <span id="year"></span> Z. Malkani &mdash; Built with plain HTML + CSS.
+      </div>
 
-    <footer>
-      © <span id="year"></span> Your Name. Built with plain HTML + CSS.
-    </footer>
+    </div>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    function updateClock() {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      m = m < 10 ? '0' + m : m;
+      document.getElementById('clock').textContent = h + ':' + m + ' ' + ampm;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
   </script>
 </body>
 </html>
