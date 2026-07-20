@@ -181,6 +181,21 @@
       border-left-color: var(--shadow-light);
       padding: 12px 14px;
       margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .project-img {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .project-content {
+      flex: 1;
     }
 
     .project h3 {
@@ -336,15 +351,21 @@
         <h2>Projects</h2>
 
         <div class="project">
-          <h3>openRow-mantis</h3>
-          <p>Open-source rowing performance tracker and analytics platform.</p>
-          <a href="https://github.com/zmalkani/openRow-mantis" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          <img src="https://github.com/user-attachments/assets/1f1abd70-dbdc-4abb-9548-73c5a7a595ca" alt="Rowing sensor mounted on a boat with city skyline in the background" class="project-img" />
+          <div class="project-content">
+            <h3>openRow-mantis</h3>
+            <p>Open-source rowing performance tracker and analytics platform.</p>
+            <a href="https://github.com/zmalkani/openRow-mantis" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </div>
         </div>
 
         <div class="project">
-          <h3>Malkani Bike Computer</h3>
-          <p>Custom bike computer built from scratch &mdash; hardware and software for real-time ride data.</p>
-          <a href="https://github.com/zmalkani/Malkani-Bike-Computer" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          <img src="https://github.com/user-attachments/assets/171ee84e-82b5-47d5-ba07-00f4ded529fd" alt="Custom bike computer hardware showing circuit board and display" class="project-img" />
+          <div class="project-content">
+            <h3>Malkani Bike Computer</h3>
+            <p>Custom bike computer built from scratch &mdash; hardware and software for real-time ride data.</p>
+            <a href="https://github.com/zmalkani/Malkani-Bike-Computer" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </div>
         </div>
       </div>
 
